@@ -539,7 +539,7 @@ grid-template-rows: 24vw auto 0;
 
 .contact{
   background-color: #DDBC6A;
-  width: 60vh;
+  width: 11vh;
   border-radius: 1rem;
   overflow: hidden;
   margin: auto;
@@ -809,16 +809,4 @@ input{
 }
 
 
-}
-
-.search-bar{
-  border: 1px solid gray;
-}
-
-.search-btn{
-  position: relative;
-  top: 2rem;
-  left: 5rem;
-  font-size: large;
-  
 }
