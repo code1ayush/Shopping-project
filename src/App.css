@@ -255,11 +255,6 @@ grid-template-rows: 24vw auto 0;
 
 
 
-/* .in-form{
-  display: grid;
-  grid-template-columns: auto auto auto;
-  row-gap: 5rem;
-} */
 
 
 
@@ -544,7 +539,7 @@ grid-template-rows: 24vw auto 0;
 
 .contact{
   background-color: #DDBC6A;
-  width: 11vh;
+  width: 60vh;
   border-radius: 1rem;
   overflow: hidden;
   margin: auto;
@@ -565,9 +560,7 @@ grid-template-rows: 24vw auto 0;
   overflow:hidden;
 }
 
-/* .input{
-  margin: .5rem ;
-} */
+
 
 input{
   margin-left: 0rem;
@@ -685,8 +678,6 @@ input{
 }
 
 .color-btn-container {
-  /* display: flex;
-  justify-content: center; */
   position: relative;
   background-color: white;
   padding-bottom: 1rem;
@@ -697,8 +688,7 @@ input{
 
 
 .brand-btn-container {
-  /* display: flex;
-  justify-content: center; */
+
   display: grid;
     grid-template-columns: auto auto auto auto auto auto;
   position: relative;
@@ -793,8 +783,6 @@ input{
 }
 
 .brand-btn-container {
-  /* display: flex;
-  justify-content: center; */
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   position: relative;
@@ -821,4 +809,16 @@ input{
 }
 
 
+}
+
+.search-bar{
+  border: 1px solid gray;
+}
+
+.search-btn{
+  position: relative;
+  top: 2rem;
+  left: 5rem;
+  font-size: large;
+  
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import {BsTrash} from "react-icons/bs"
 
-const Wishlist = ({wish,setWish,count1,setCount1,wishToCart,delWish,modal}) => {
+const Wishlist = ({wish,count1,wishToCart,delWish,modal}) => {
   // const delWish =(id)=>{
   //   const delW = wish.filter((item)=>item.id!==id);
   //   setWish(delW);
@@ -16,7 +16,7 @@ const Wishlist = ({wish,setWish,count1,setCount1,wishToCart,delWish,modal}) => {
         const{id,name,price,imageUrl} = items;
         return(
           <article key={id} className="container2">
-          <img className='item-image' src={imageUrl} alt="" />
+          <img className='item-image' src={imageUrl} alt="image" />
             <div className="title">
               <p className='name'>{name}</p>
               <p className='price'>{price}$</p> 

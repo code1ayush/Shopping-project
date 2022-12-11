@@ -1,7 +1,7 @@
 const prList = [
 {
   id:204043973,
-name:"Converse Chuck Taylor All Star CX explore sneakers in egret and black",
+name:"Converse",
 price:15.55,
 colour:"WHITE",
 colourWayId:204043975,
@@ -409,7 +409,7 @@ url:"puma/puma-ca-pro-suede-sneakers-in-beige/prd/203462977?clr=beige&colourWayI
 imageUrl:"https://rukminim1.flixcart.com/image/612/612/xif0q/shoe/3/k/k/-original-imagg4kbh53xg9pp.jpeg?q=70",
 },
  {id:202962906,
-name:"Nike Air ",
+name:"NikeAir",
 price:56,
 colour:"BLACK",
 colourWayId:202962907,

@@ -1,14 +1,13 @@
-import React ,{useState,useContext}from 'react'
-import { BsFillArrowUpCircleFill,BsFillArrowDownCircleFill } from "react-icons/bs";
+import React ,{useState,useEffect}from 'react'
+import { BsFillArrowUpCircleFill,BsFillArrowDownCircleFill,BsSearch } from "react-icons/bs";
 import {AiTwotoneHeart} from "react-icons/ai"
 import Data from './data'
-import Newcart from './Cart';
 
 
 const allColors = ["All", ...new Set(Data.map((item)=> item.colour))];
 const allBrands = ["All", ...new Set(Data.map((item)=>item.brandName))];
 
-const Shop = ({sliceCart,sliceWish,modal}) => {
+const Shop = ({sliceCart,sliceWish,modal,search,setSearch}) => {
 
   const[list,setList] =useState(Data);
   const[showColor,setShowColor] = useState(false);
@@ -66,7 +65,8 @@ const popUpd = [...list].sort((a,b)=>b.productCode-a.productCode);
     setList(Data);
     return;
     }
-    const newBrandList = Data.filter((item)=>item.brandName===brand);
+    const newBrandList = Data.filter((item)=>
+    item.brandName===brand)
     setList(newBrandList);
   }
 
@@ -95,9 +95,20 @@ const popUpd = [...list].sort((a,b)=>b.productCode-a.productCode);
   }
 
 
+const searchHandleChange=(e)=>{
+    setSearch(e.target.value);
+  }
+
+  const[searchList,setSearchList] = useState(Data)
+
+ 
 
 
-  
+  useEffect(() => {
+    const c1_list = Data.filter((items)=>items.brandName.toLowerCase()[1]===search[1])
+    setSearchList(c1_list);
+  }, [search])
+
 
 
   return (
@@ -145,16 +156,21 @@ const popUpd = [...list].sort((a,b)=>b.productCode-a.productCode);
         )
       })}
     </div>
+    <div>
+     <BsSearch className='search-btn'/></div>
+       <div ><input type="text" className='search-bar' value={search} onChange={searchHandleChange} placeholder={`Search brand name`}  />
+      </div>
+      
     </div>
     <div className='modal'>{`${modal}`}</div>
     </div>
     
-    <div className="container">
-      {list.map((items)=>{
+   {searchList.length? <div className="container">
+      {searchList.map((items)=>{
         const{id,name,price,imageUrl} = items;
         return(
           <article key={id} className="container2">
-          <img className='item-image' src={imageUrl} alt="" />
+          <img className='item-image' src={imageUrl} alt="image" />
             <div className="title">
               <p className='name'>{name}</p>
               <p className='price'>{price}$</p>
@@ -170,7 +186,28 @@ const popUpd = [...list].sort((a,b)=>b.productCode-a.productCode);
        
       })}
 
-      </div>
+      </div>: <div className="container">
+      {list.map((items)=>{
+        const{id,name,price,imageUrl} = items;
+        return(
+          <article key={id} className="container2">
+          <img className='item-image' src={imageUrl} alt="image" />
+            <div className="title">
+              <p className='name'>{name}</p>
+              <p className='price'>{price}$</p>
+            </div>
+            <div className="cart-btns">
+              <button className='add-cart-btn' onClick={()=>sliceCart(id)}>Add to Cart</button>
+              <button className='add-wish-list' onClick={()=>sliceWish(id)}><AiTwotoneHeart className='add-wish-lists'/></button>
+            </div>
+          
+          </article>
+          
+        )
+       
+      })}
+
+      </div>}
       
     
       
@@ -180,3 +217,5 @@ const popUpd = [...list].sort((a,b)=>b.productCode-a.productCode);
 }
 
 export default Shop
+
+

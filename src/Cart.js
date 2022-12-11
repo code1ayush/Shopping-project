@@ -1,8 +1,6 @@
 import React,{useState} from 'react'
-import Data from './data';
-import Shop from './Shop';
 
-const  Newcart = ({cart,setCart,count,setCount,modal,delCart}) => {
+const  Newcart = ({cart,count,modal,delCart}) => {
 
   //  console.log(cart);
  
@@ -15,7 +13,7 @@ const  Newcart = ({cart,setCart,count,setCount,modal,delCart}) => {
         const{id,name,price,imageUrl} = items;
         return(
           <article key={id} className="container2">
-          <img className='item-image' src={imageUrl} alt="" />
+          <img className='item-image' src={imageUrl} alt="image" />
             <div className="title">
               <p className='name'>{name}</p>
               <p className='price'>{price}$</p> 

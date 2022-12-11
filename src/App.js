@@ -1,6 +1,5 @@
 import React,{useState, useEffect,useContext} from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ReactDOM from "react-dom/client";
 import './App.css';
 import Data from './data';
 import Home from './Home';
@@ -42,6 +41,7 @@ const App = () => {
   const[count1,setCount1] = useState(getLocalStoragee().length);
   const[wish,setWish]=useState(getLocalStoragee());
   const[modal,setModal] = useState('');
+  const[search,setSearch] = useState('');
 
   const sliceCart=(id)=>{
   const newCart = Data.filter((item)=>item.id===id);
@@ -96,7 +96,8 @@ useEffect(() => {
 }, [wish])
 
 
-console.log(cart);
+
+
 
 
 
@@ -104,10 +105,10 @@ console.log(cart);
     <>
     <BrowserRouter>
       <Routes>
-      <Route path='/' element={<Navbar count={count} count1={count1}/>}>
+      <Route path='/' element={<Navbar count={count} count1={count1} />}>
         <Route path='Layout' element={<Layout/>}/>
         <Route index element={<Home/>}></Route>
-        <Route path='Shop' element={<Shop sliceCart={sliceCart} sliceWish={sliceWish} modal={modal}/>}/>
+        <Route path='Shop' element={<Shop sliceCart={sliceCart} sliceWish={sliceWish} modal={modal} search={search} setSearch={setSearch}/>}/>
         <Route path='Contact' element={<Contact/>}/>
         <Route path='Cart' element={<Newcart  cart={cart} setCart={setCart} count={count} setCount={setCount} modal={modal} delCart={delCart}/>}/>
         <Route path='Wishlist' element={<Wishlist wish={wish} setWish={setWish} count1={count1} setCount1={setCount1} wishToCart={wishToCart} delWish={delWish} modal={modal}/>}/>
