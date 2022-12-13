@@ -3,6 +3,8 @@ import React,{useState} from 'react'
 const  Newcart = ({cart,count,modal,delCart}) => {
 
   //  console.log(cart);
+
+
  
   return (
     <>
@@ -20,6 +22,7 @@ const  Newcart = ({cart,count,modal,delCart}) => {
             </div>
             <div className="wcart-btns">
               <button className='add-cart-btn' onClick={()=>delCart(id)}>Remove</button>
+              
             </div>
           
           </article>

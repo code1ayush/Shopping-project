@@ -44,18 +44,33 @@ const App = () => {
   const[search,setSearch] = useState('');
 
   const sliceCart=(id)=>{
+    if((cart.filter((item)=>item.id===id)).length)
+    {
+      setCart(cart)
+      setModal(`item already in Cart`)
+    }
+    else{
   const newCart = Data.filter((item)=>item.id===id);
+   
   setCart(cart.concat(newCart));
   setCount(cart.length+1);
   setModal(`item is added to Cart`)
+    }
 }
 
 
 const sliceWish=(id)=>{
+   if((wish.filter((item)=>item.id===id)).length)
+    {
+      setWish(wish)
+      setModal(`item already in wishlist`)
+    }
+    else{
   const newWish = Data.filter((item)=>item.id===id);
   setCount1(wish.length+1);
   setWish(wish.concat(newWish));
   setModal(`item is added to WishList`)
+    }
 }
 
 const wishToCart =(id)=>{
@@ -82,7 +97,7 @@ const wishToCart =(id)=>{
   useEffect(() => {
   const timer = setTimeout(() => setModal(''), 2000);
   return () =>clearTimeout(timer)
-},[sliceCart,sliceWish,delCart,delWish,wishToCart]);
+},[cart,wish,modal]);
 
 
 useEffect(() => {

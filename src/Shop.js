@@ -22,7 +22,7 @@ const Shop = ({sliceCart,sliceWish,modal,search,setSearch}) => {
 //   setCart(newCart);
 // }
 
-  const priceUp = [...list].sort((a,b)=>a.price-b.price);
+const priceUp = [...list].sort((a,b)=>a.price-b.price);
 const priceDown = [...list].sort((a,b)=>b.price-a.price);
 const popUp = [...list].sort((a,b)=>a.productCode-b.productCode);
 const popUpd = [...list].sort((a,b)=>b.productCode-a.productCode);
@@ -54,39 +54,47 @@ const popUpd = [...list].sort((a,b)=>b.productCode-a.productCode);
   const filterListColor =(colour)=>{
     if(colour ==='All'){
     setList(Data);
+    setSearchList(Data);
     return;
     }
     const newList = Data.filter((item)=>item.colour===colour);
     setList(newList);
+    setSearchList(newList);
   }
 
   const filterListBrand = (brand)=>{
     if(brand==="All"){
     setList(Data);
+    setSearchList(Data);
     return;
     }
     const newBrandList = Data.filter((item)=>
     item.brandName===brand)
     setList(newBrandList);
+    setSearchList(newBrandList);
   }
 
   const sortPriceUp=()=>{
     setList(priceUp);
+    setSearchList(priceUp);
     setShowSort(false)
   }
 
   const sortPriceDown=()=>{
     setList(priceDown);
+    setSearchList(priceDown);
     setShowSort(false)
   }
 
   const sortpop=()=>{
     setList(popUp);
+    setSearchList(popUp);
     setShowSort(false)
   }
 
   const sortpopd=()=>{
     setList(popUpd);
+    setSearchList(popUpd);
     setShowSort(false)
   }
 
@@ -105,9 +113,16 @@ const searchHandleChange=(e)=>{
 
 
   useEffect(() => {
-    const c1_list = Data.filter((items)=>items.brandName.toLowerCase()[1]===search[1])
+    const c1_list = Data.filter((items)=>items.brandName.toLowerCase().includes(search));
+    if(c1_list){
     setSearchList(c1_list);
+    }
+    else
+    {
+      setSearchList([]);
+    }
   }, [search])
+
 
 
 
@@ -125,10 +140,10 @@ const searchHandleChange=(e)=>{
     <button className='sort-btn' onClick={dispsort}>sort</button>
     {showsort?<div className="sort-container">
     <button onClick={sortPriceUp} 
-   >Price <BsFillArrowUpCircleFill  className="uparrow"/></button>
-    <button onClick={sortPriceDown} >Price<BsFillArrowDownCircleFill className="downarrow"/></button>
-    <button onClick={sortpop} >Popularity<BsFillArrowUpCircleFill className="uparrow"/></button>
-    <button onClick={sortpopd} >Popularity<BsFillArrowDownCircleFill className="downarrow"/></button>
+    className="sort-price-up">Price <BsFillArrowUpCircleFill  className="uparrow-price"/></button>
+    <button onClick={sortPriceDown} className="sort-price-up">Price<BsFillArrowDownCircleFill className="downarrow-price"/></button>
+    <button onClick={sortpop} className="sort-price-up">Popularity<BsFillArrowUpCircleFill className="uparrow-pop"/></button>
+    <button onClick={sortpopd} className="sort-price-up">Popularity<BsFillArrowDownCircleFill className="downarrow-pop"/></button>
     </div>:[]}
     </div>
     <div className="parent">
@@ -156,16 +171,21 @@ const searchHandleChange=(e)=>{
         )
       })}
     </div>
-    <div>
-     <BsSearch className='search-btn'/></div>
-       <div ><input type="text" className='search-bar' value={search} onChange={searchHandleChange} placeholder={`Search brand name`}  />
-      </div>
-      
-    </div>
-    <div className='modal'>{`${modal}`}</div>
     </div>
     
-   {searchList.length? <div className="container">
+    </div>
+    <div className='align'>
+     <BsSearch className='search-btn'/>
+       <div className='search-background' ><input type="text" className='search-bar' value={search} onChange={searchHandleChange} placeholder={`Search brand name here..`}  />
+      </div>
+      
+      </div>
+      <div className="sticky">
+      <div className='modal'>{`${modal}`}</div>
+      </div>
+    
+   {
+    searchList.length? <div className="container">
       {searchList.map((items)=>{
         const{id,name,price,imageUrl} = items;
         return(

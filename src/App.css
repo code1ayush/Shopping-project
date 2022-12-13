@@ -254,10 +254,6 @@ grid-template-rows: 24vw auto 0;
 
 
 
-
-
-
-
 .function{
   display: flex;
   justify-content: center;
@@ -286,7 +282,6 @@ grid-template-rows: 24vw auto 0;
   top: .7rem;
   right:2rem;
   z-index: 999;
-  margin-bottom: 2rem;
 }
 
 .btn-container>button{
@@ -322,7 +317,6 @@ grid-template-rows: 24vw auto 0;
   justify-content: center;
   position: relative;
   background-color: white;
-  padding-bottom: 1rem;
   
 }
 
@@ -368,8 +362,8 @@ grid-template-rows: 24vw auto 0;
 .sort-btn{
   position:fixed;
   z-index: 9999;
-  top: 2rem;
-  right: 4.5rem;
+  top: .5rem;
+  right: 2.5rem;
   background-color: #DDBC6A;
   border: none;
   padding: .3rem 1rem .3rem 1rem;
@@ -381,12 +375,13 @@ grid-template-rows: 24vw auto 0;
 
 .sort-container{
   display: grid;
-  grid-template-columns: 8rem;
+  grid-template-columns: 6.4rem;
   position: fixed;
   place-items: start;
-  top: 4rem;
+  top: 3rem;
   right: .3rem;
   z-index: 999999;
+  box-shadow: 1px  1px  10px #DDBC6A ;
 
 }
 
@@ -396,15 +391,46 @@ grid-template-rows: 24vw auto 0;
   font-size: 1rem;
   padding: .3rem;
   
+  
 }
 
-.uparrow{
+.sort-price-up{
+  text-align: end;
+}
+
+.uparrow:hover{
+  cursor: pointer;
+}
+
+.uparrow-price{
   color: green;
+  position: relative;
+  top: .2rem;
+  right: -2rem;
+}
+.uparrow-pop {
+  color: red;
+  position: relative;
+  top: .2rem;
+  right: -.2rem;
 }
 
-.downarrow{
-  color: red;
+.downarrow-price {
+  color: green;
+  position: relative;
+  top: .2rem;
+  right: -2.3rem;
 }
+
+.downarrow-pop {
+  color: red;
+  position: relative;
+  top: .2rem;
+  right: -.2rem;
+}
+
+
+
 
 .cart-btns{
   display: flex;
@@ -507,10 +533,19 @@ grid-template-rows: 24vw auto 0;
 
 .modal{
   background-color:#C4E8C2;
-  margin:.5rem 30vw 0 30vw ;
+  margin:-0rem 30vw 0 30vw ;
   border-radius: .5rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
   justify-content: center;
+  position: relative;
+  text-align: center;
+ 
+}
+
+.sticky{
+  position: sticky;
+  top: 6rem;
+  z-index: 9999999999999999999999;
 }
 
 
@@ -718,6 +753,7 @@ input{
 
 @media only screen and (max-width:500px) {
 
+
   .container{
     display: grid;
     grid-template-columns: 42vw 42vw;
@@ -750,6 +786,13 @@ input{
   font-size: .9rem;
 }
 
+.add-cart-btn:hover{
+  width: 20vw;
+
+}
+
+
+
 
 .wcart-btns{
   margin:auto;
@@ -768,6 +811,12 @@ input{
   position: relative;
   top: 36rem;
   justify-content: space-around;
+}
+
+.modal{
+  position: relative;
+  top: 3rem;
+  z-index: 999999999999999999999999999999;
 }
 
 }
@@ -808,24 +857,60 @@ input{
   top: -10rem;
 }
 
+.align {
+  text-align: center;
+  position: sticky;
+  top: 2rem;
+  z-index: 9999;
+
+}
+
 
 }
 
 .search-bar{
   border: 1.5px solid #DDBC6A;
-  position: relative;
-  top: -2.5rem;
+  width: 15rem;
+  background-color:rgba(0, 255, 0, 0);
 }
 
 .search-btn{
   position: relative;
-  top: -.5rem;
-  left: 5rem;
+  left: 7rem;
+  top: 2rem;
   font-size: larger;
   cursor: pointer;
-  z-index: 9;
+  z-index: 99;
 }
 
-.search-btn::selection{
-  border:#DDBC6A
+.sort-price-up:hover{
+  cursor: pointer;
+}
+
+
+.align{
+  text-align: center;
+  position:sticky;
+  top: .1rem;
+  z-index: 9999;
+  margin:auto;
+  width: 15rem;
+
+}
+
+
+@media only screen and (max-width:800px){
+  .align {
+      text-align: center;
+      position: sticky;
+      top: 2rem;
+      z-index: 9999;
+      width: 100%;
+  
+    }
+
+    .search-background{
+      background-color: white;
+      padding-bottom:1rem ;
+    }
 }
